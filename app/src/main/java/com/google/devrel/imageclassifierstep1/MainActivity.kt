@@ -1,17 +1,3 @@
-// Copyright 2022 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 package com.google.devrel.imageclassifierstep1
 
 import android.content.Context
@@ -32,9 +18,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val img: ImageView = findViewById(R.id.imageToLabel)
-        // assets folder image file name with extension
+        // gắn hình ảnh ở trong thư mục assets vào 1 biến
         val fileName = "dog.jpg"
-        // get bitmap from assets folder
+        // Lấy bitmap từ file hình ảnh
         val bitmap: Bitmap? = assetsToBitmap(fileName)
         bitmap?.apply {
             img.setImageBitmap(this)
@@ -47,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             var outputText = ""
             labeler.process(image)
                 .addOnSuccessListener { labels ->
-                    // Task completed successfully
+                    // Xử lý khi thành công
                     for (label in labels) {
                         val text = label.text
                         val confidence = label.confidence
@@ -57,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                     txtOutput.text = outputText
                 }
                 .addOnFailureListener { e ->
-                    // Task failed with an exception
+                    // Xử lý khi thất bại
                     // ...
                 }
 
@@ -65,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-// extension function to get bitmap from assets
+// hàm dùng để lấy bitmap từ file hình ảnh
 fun Context.assetsToBitmap(fileName: String): Bitmap?{
     return try {
         with(assets.open(fileName)){
