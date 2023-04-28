@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "ImageClassifierStep1"
+rootProject.name = "ImageClassifierStep2"

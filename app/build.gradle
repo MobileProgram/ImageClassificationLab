@@ -4,13 +4,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     buildToolsVersion "30.0.3"
-
+    aaptOptions{
+        noCompress "tflite"
+    }
     defaultConfig {
-        applicationId "com.google.devrel.imageclassifierstep1"
+        applicationId "com.google.devrel.imageclassifierstep2"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -43,5 +45,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     // Use this dependency to bundle the model with your app
-    implementation 'com.google.mlkit:image-labeling:17.0.3'
+    implementation 'com.google.mlkit:image-labeling-custom:16.3.1'
 }
